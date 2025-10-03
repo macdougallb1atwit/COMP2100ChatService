@@ -6,7 +6,6 @@ import java.util.concurrent.*;
 
 /**
  * 
- * 
  * DONE Implement TCP server capabilities.
  * 
  * @author Benjamin MacDougall, Sean Perez, Zach "", Alex ""
@@ -14,11 +13,6 @@ import java.util.concurrent.*;
  * @version 1.0 2025-09-24 Initial implementation
  *
  * @since 1.0
- * 
- * 
- * 
- * 
- * 
  * 
  */
 public class TCPServer
@@ -30,18 +24,23 @@ public class TCPServer
 	private File messageHistoryFile; //History file that contains all chat history, along with timestamps and client IDs.
 	private BufferedWriter historyWriter; //The file writer that adds to history file.
 
+	/**
+	 * @param port
+	 *
+	 * @since 1.0
+	 */
 	public TCPServer(int port) {
 
 		try {
 
 			//this is all initializing the instance variables.
-			serverSocket = new ServerSocket(port);
+			this.serverSocket = new ServerSocket(port);
 
-			clientMap = new ConcurrentHashMap<String, Socket>();
+			this.clientMap = new ConcurrentHashMap<String, Socket>();
 
-			messageHistoryFile = new File("message_history_test.txt");
+			this.messageHistoryFile = new File("message_history_test.txt");
 
-			historyWriter = new BufferedWriter(new FileWriter(messageHistoryFile, true));
+			this.historyWriter = new BufferedWriter(new FileWriter(messageHistoryFile, true));
 
 			System.out.println("The best groups TCP chat server successfully started on port: " + port);
 
@@ -67,6 +66,7 @@ public class TCPServer
 
 		String timestamp = DateFormat.getDateTimeInstance().format(new Date(System.currentTimeMillis())); //idk if this works i looked it up ngl
 
+		//these are strings formatted for each purpose. Sender, recipient, and server.
 		String serverFormat = "[" + timestamp + "] " + senderID + " -> " + recipientID + ": " + message;
 		String senderFormat = "To " + recipientID + ": " + message;
 		String recipientFormat = "From " + senderID + ": " + message;
@@ -220,5 +220,4 @@ public class TCPServer
 		new TCPServer(9002);
 
 	}
-}
-// end class TCPServer
+}//end class TCPServer
