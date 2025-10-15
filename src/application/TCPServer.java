@@ -1,9 +1,4 @@
-package application ;
-
-
-
-
-
+package application;
 import java.io.*;
 import java.net.*;
 import java.text.DateFormat;
@@ -163,6 +158,7 @@ public class TCPServer
 
 		//**the only thing is we need to make sure the users name does not ever have REQ or whatever we decide to use as the send history flag.
 		//so that way a user is never stun-locked and never able to send a message because all of their sent messages are flagged as history requests.
+		//Zach brought up the idea to use invisible or non typeable chars as flags so we dont have to restrict usernames.
 
 		private String clientID;
 		private String recipientID;
