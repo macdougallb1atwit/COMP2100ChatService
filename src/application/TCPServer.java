@@ -21,7 +21,7 @@ public class TCPServer
 
 	private ServerSocket serverSocket; //socket to listen for the incoming connections.
 	//map that tracks clients by their IDs and stores their socket. (importantly thread safe.)
-	private ConcurrentHashMap<String, Socket> clientMap; 
+	private ConcurrentHashMap<String, Socket> clientMap;
 	private File messageHistoryFile; //History file that contains all chat history, along with timestamps and client IDs.
 	private BufferedWriter historyWriter; //The file writer that adds to history file.
 
@@ -199,8 +199,8 @@ public class TCPServer
 					}
 					else
 					{
+					
 						//regular messages
-
 						this.clientID = line;
 						this.recipientID = in.readLine();
 						String message = in.readLine();
@@ -219,7 +219,7 @@ public class TCPServer
 	}
 	public static void main(String[] args) {
 
-		new TCPServer(9002);
+		new TCPServer(9003);
 
 	}
 }//end class TCPServer
