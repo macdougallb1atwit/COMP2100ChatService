@@ -7,8 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MessageController">
    <center>
       <AnchorPane prefHeight="600.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -18,7 +19,7 @@
                   <Button fx:id="send" onAction="#messageSend" text="Send" />
                </children>
             </HBox>
-            <TextArea fx:id="messageBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="600.0" />
+			<VBox prefHeight="517.0" prefWidth="600.0" />
          </children>
       </AnchorPane>
    </center>
