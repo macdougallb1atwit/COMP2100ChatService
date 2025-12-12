@@ -15,8 +15,11 @@ import javafx.scene.control.TextField ;
  *
  * @since 1.0
  */
-public class MessageController
+public class LoginController
     {
+    
+    Main main;
+    
 
     @FXML
     private Button send ;
@@ -25,12 +28,20 @@ public class MessageController
     private TextField userMessage;
 
     @FXML
-    private void messageSend( ActionEvent event )
+    private void cliendIDSend( ActionEvent event )
         {
 
         String userTyped = this.userMessage.getText() ;
         this.userMessage.clear() ;
-        System.out.print(userTyped);
+        
+        try
+            {
+            this.main.showMessageScreen();
+            }
+        catch ( Exception e )
+            {
+            e.printStackTrace() ;
+            }
         
         
 
@@ -45,8 +56,7 @@ public class MessageController
     public void setMain( Main main )
         {
 
-        // TODO Auto-generated method stub
-        
+        this.main = main;
 
         }
 
