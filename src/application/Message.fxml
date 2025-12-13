@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="application.MessageController" prefWidth="600" prefHeight="600">
-    <children>
-            <content>
-                <VBox fx:id="messageVBox" spacing="5"/>
-            </content>
+<AnchorPane xmlns="http://javafx.com/javafx/25"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.MessageController" prefWidth="600.0"
+	prefHeight="400.0">
 
-        <HBox layoutX="10" layoutY="520" spacing="5">
-            <TextField fx:id="recipientField" promptText="Recipient"/>
-            <TextField fx:id="messageField" promptText="Message" prefWidth="400"/>
-            <Button fx:id="actionButton" text="Load / Set Recipient" onAction="#loadAndSetRecipient"/>
-            <Button fx:id="sendButton" text="Send" onAction="#messageSend"/>
-        </HBox>
-    </children>
+	<children>
+
+		<HBox layoutX="10.0" layoutY="10.0" spacing="10.0">
+			<children>
+				<TextField fx:id="recipientField"
+					promptText="Recipient ID..." prefWidth="400.0" />
+				<Button fx:id="actionButton" text="Load"
+					onAction="#loadAndSetRecipient" />
+			</children>
+		</HBox>
+
+		<ScrollPane fx:id="scrollPane" layoutX="10.0"
+			layoutY="50.0" prefWidth="580.0" prefHeight="300.0" fitToWidth="true">
+			<content>
+				<VBox fx:id="messageVBox" spacing="5.0" />
+			</content>
+		</ScrollPane>
+
+		<HBox layoutX="10.0" layoutY="360.0" spacing="10.0">
+			<children>
+				<TextField fx:id="messageField" prefWidth="480.0"
+					promptText="Type a message..." />
+				<Button fx:id="sendButton" text="Send"
+					onAction="#messageSend" />
+			</children>
+		</HBox>
+
+	</children>
 </AnchorPane>

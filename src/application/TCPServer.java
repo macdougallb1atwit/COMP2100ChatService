@@ -1,4 +1,5 @@
-package application;
+
+package application ;
 
 import java.io.BufferedReader ;
 import java.io.BufferedWriter ;
@@ -17,8 +18,6 @@ import java.util.List ;
 import java.util.concurrent.ConcurrentHashMap ;
 
 /**
- * 
- *
  * @author Benjamin
  *
  * @version 1.2 2025-11-12 Updated the REQ and message protocol slightly
@@ -251,16 +250,17 @@ public class TCPServer
                         final List<String> history = getMessageHistoryBetween( senderID.replace( " REQ",
                                                                                                  "" ),
                                                                                recipientID ) ;
-
                         // Send REQ header
                         this.out.write( senderID + "\n" ) ;
                         this.out.write( recipientID + "\n" ) ;
 
+                        // Send messages if any
                         for ( final String msg : history )
                             {
                             this.out.write( msg + "\n" ) ;
                             }
 
+                        // Always send REQ end
                         this.out.write( "REQ\n" ) ;
                         this.out.flush() ;
 

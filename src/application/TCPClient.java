@@ -10,11 +10,9 @@ import java.net.Socket ;
 import java.util.concurrent.ConcurrentLinkedQueue ;
 
 /**
- * 
  * @author Ben
  *
  * @version 1.0 2025-12-12 Initial implementation
- *
  *
  * @since 1.0
  */
@@ -34,14 +32,11 @@ public class TCPClient implements Runnable
 
 
     /**
-     * 
      * Allows the GUI to be updated asynchronously when a new message arrives.
-     * 
-     * 
+     *
      * @author Ben
      *
      * @version 1.0 2025-12-12 Initial implementation
-     *
      *
      * @since 1.0
      */
@@ -49,8 +44,8 @@ public class TCPClient implements Runnable
         {
 
         /**
-         * 
-         * @param message from the sender.
+         * @param message
+         *     from the sender.
          *
          * @since 1.0
          */
@@ -60,10 +55,15 @@ public class TCPClient implements Runnable
 
 
     /**
-     * @param id is this clients id.
-     * @param hostIP (server)
-     * @param port (server port)
-     * @throws IOException if the IO fails.
+     * @param id
+     *     is this clients id.
+     * @param hostIP
+     *     (server)
+     * @param port
+     *     (server port)
+     *
+     * @throws IOException
+     *     if the IO fails.
      *
      * @since 1.0
      */
@@ -172,9 +172,10 @@ public class TCPClient implements Runnable
 
 
     /**
-     * 
-     * @param receiverID is the ID of the receiver.
-     * @param message the message being sent.
+     * @param receiverID
+     *     is the ID of the receiver.
+     * @param message
+     *     the message being sent.
      *
      * @since 1.0
      */
@@ -199,9 +200,11 @@ public class TCPClient implements Runnable
 
 
     /**
-     * 
-     * @param recipientID is the id which the server will look for along with the clientID.
-     * @throws IOException if the IO fails.
+     * @param recipientID
+     *     is the id which the server will look for along with the clientID.
+     *
+     * @throws IOException
+     *     if the IO fails.
      *
      * @since 1.0
      */
@@ -213,16 +216,36 @@ public class TCPClient implements Runnable
         this.out.write( recipientID + "\n" ) ;
         this.out.flush() ;
 
+        final long start = System.currentTimeMillis() ;
+
         while ( this.req )
             {
-            // busy wait until history is processed
+
+            if ( ( System.currentTimeMillis() - start ) > 2000 )
+                {
+                System.out.println( "No history received; continuing." ) ;
+                this.req = false ;
+                break ;
+                }
+
+            try
+                {
+                Thread.sleep( 10 ) ;
+                }
+            catch ( final InterruptedException e )
+                {
+                Thread.currentThread().interrupt() ;
+                }
+
             }
 
         }
 
+
     /**
-     * 
-     * @param message the message that is being tested.
+     * @param message
+     *     the message that is being tested.
+     *
      * @return true if the queue does not contain the message.
      *
      * @since 1.0
@@ -236,8 +259,8 @@ public class TCPClient implements Runnable
 
 
     /**
-     * 
-     * @param listener is the passed in reference.
+     * @param listener
+     *     is the passed in reference.
      *
      * @since 1.0
      */
@@ -250,7 +273,6 @@ public class TCPClient implements Runnable
 
 
     /**
-     * 
      * @return the client ID.
      *
      * @since 1.0
