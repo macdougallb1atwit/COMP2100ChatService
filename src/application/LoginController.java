@@ -1,64 +1,49 @@
+package application;
 
-package application ;
-
-import javafx.event.ActionEvent ;
-import javafx.fxml.FXML ;
-import javafx.scene.control.Button ;
-import javafx.scene.control.TextField ;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 /**
  * 
- * @author Ben
+ * @author Ben, Sean
  *
- * @version 1.0 2025-11-24 Initial implementation
+ * @version 1.0 2025-12-12 Initial implementation
  *
  *
  * @since 1.0
  */
-public class LoginController
-    {
-    
+public class LoginController {
+
+    /**  */
     Main main;
-    
 
     @FXML
-    private Button send ;
+    private Button send;
 
     @FXML
     private TextField userMessage;
 
     @FXML
-    private void cliendIDSend( ActionEvent event )
-        {
+    private void clientIDSend() {
+        String id = this.userMessage.getText();
+        this.userMessage.clear();
 
-        String userTyped = this.userMessage.getText() ;
-        this.userMessage.clear() ;
-        
-        try
-            {
+        try {
+            this.main.createClient(id, "localhost", 9001);
             this.main.showMessageScreen();
-            }
-        catch ( Exception e )
-            {
-            e.printStackTrace() ;
-            }
-        
-        
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
     /**
      * 
-     * @param main
+     * @param main1 the passed in reference
      *
      * @since 1.0
      */
-    public void setMain( Main main )
-        {
-
-        this.main = main;
-
-        }
-
-
+    public void setMain(Main main1) {
+        this.main = main1;
     }
+}

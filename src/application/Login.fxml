@@ -4,10 +4,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<AnchorPane xmlns="http://javafx.com/javafx/25"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.LoginController" prefHeight="261.0"
+	prefWidth="600.0">
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="261.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button layoutX="416.0" layoutY="118.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Enter" />
-      <TextField layoutX="132.0" layoutY="118.0" prefHeight="25.0" prefWidth="284.0" promptText="Username..." />
-   </children>
+	<children>
+
+		<Button fx:id="send" layoutX="416.0" layoutY="118.0"
+			prefHeight="25.0" prefWidth="52.0" text="Enter"
+			onAction="#clientIDSend" />
+
+		<TextField fx:id="userMessage" layoutX="132.0"
+			layoutY="118.0" prefHeight="25.0" prefWidth="284.0"
+			promptText="Username..." />
+
+	</children>
+
 </AnchorPane>
